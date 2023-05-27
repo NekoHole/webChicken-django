@@ -1,0 +1,82 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}Продукция {% endblock %}
+{% block links %} 
+
+<link rel="stylesheet" href="{% static 'production/css/production_home.css' %}">
+
+{% endblock %}
+
+{% block content %}
+    <div class="features container">
+        <h1>Продукция компании</h1>
+        <p>На этой сtранице можно узнать о продукции компании...<br>Уже сейчас!!</p>
+
+          <div class="row d-flex justify-content-center ">
+            <form id="productForm" method="get" data-types-url="{% url 'ajax_load_types' %}">
+                  {{ form.category}}
+                  {{ form.type}}  
+                <button  class="btn btn-warning" type="submit">Фильтр</button>
+            </form>
+          </div>
+
+          {% if page_obj %} <!-- если в объекте newsесть записи, то мы их выводим-->   
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4 g-3 justify-content-center mt-2"> 
+            {% for el_product in page_obj %}
+              <div class="col">
+                <div class="card h-100 shadow p3">
+                    <a href="{% url 'production_detail' el_product.url %}"><img class="card-img-top" width="100%" height="225" src="{{el_product.mainimage.url}}" aria-label="картинка"  >
+                    </img></a>
+                    <div class="card-body">
+                        <h5 id="icard-title" class="card-title">{{el_product.name}}</h5>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                      <div class="shadow-sm">
+                        <a href="{% url 'production_detail' el_product.url %}" class="btn btn-warning " >Читать далее </a>
+                      </div>
+                        <small class="text-body-secondary">{{el_product.tag.title}}</small>
+                    </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="row mt-3">
+            <div class="row pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                      <a href="?page=1&{{ request.GET.urlencode|cut:'page=' }}">« Начало</a>
+                      <a href="?page={{ page_obj.previous_page_number }}&{{ request.GET.urlencode|cut:'page=' }}">назад</a>
+                    {% endif %}
+                    <span class="current">
+                      Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+                    </span>
+                    {% if page_obj.has_next %}
+                      <a href="?page={{ page_obj.next_page_number }}&{{ request.GET.urlencode|cut:'page=' }}">далее</a>
+                      <a href="?page={{ page_obj.paginator.num_pages }}&{{ request.GET.urlencode|cut:'page=' }}">Конец »</a>
+                    {% endif %}
+                </span>
+            </div>
+            <div class="page-numbers">
+                {% for num in page_obj.paginator.get_elided_page_range %}
+                  {% if num == page_obj.number %}
+                    <span class="current">{{ num }}</span>
+                  {% else %}
+                    <a href="?page={{ num }}&{{ request.GET.urlencode|cut:'page=' }}">{{ num }}</a>
+                  {% endif %}
+                {% endfor %}
+            </div>
+          </div>
+        {% else %}
+            <p> У Вас Нет Записей! </p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block JavaScript %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Подключить jQuery -->
+<script src="{% static 'production/js/production_home.js' %}"></script>
+
+{% endblock %}

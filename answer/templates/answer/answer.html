@@ -1,0 +1,28 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}Карьера {% endblock %}
+{% block links %} 
+<link rel="stylesheet" href="{% static 'answer/css/answer.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>ВОПРОС-ОТВЕТ</h1>
+    <h4>На этой странице представлены все самые популярные вопросы и ответы на них</h4>
+    {%for el_answer in answerr_out %}
+    <div id="search-buttoni" class="d-block iUstal shadow">
+        <div id="question" data-bs-toggle="collapse" href="#collapseExample{{el_answer.id}}" role="button" aria-expanded="false" aria-controls="collapseExample{{el_answer.id}}">
+            <span>{{ el_answer.anons}}</span>
+        </div> 
+        <div class="collapse" id="collapseExample{{el_answer.id}}">
+            <div class="card card-body">
+                {{ el_answer.full_text}}
+            </div>
+        </div> 
+    </div>
+    {% endfor%}
+{% endblock %}
+
+{% block JavaScript %}
+{% endblock %}

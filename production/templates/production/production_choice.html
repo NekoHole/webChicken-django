@@ -1,0 +1,52 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}Продукция {% endblock %}
+{% block links %} 
+
+<link rel="stylesheet" href="{% static 'production/css/production_home.css' %}">
+
+{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Категории</h1>
+        <p>На этой сtранице можно узнать о продукции компании...<br>Уже сейчас!!</p>
+
+        {% if cate %} <!-- если в объекте newsесть записи, то мы их выводим-->    
+            {% for category in cate %}
+                <div class="alert alert-warning">
+                    <div id="name">
+                        <h3> {{category.title}} </h3> 
+                    </div>
+                </div>
+            {% endfor %}
+            {% for type in view.get_product_type %}
+                <h3> {{ type.name }} </h3>
+                <h3> {{ type.idtype }} </h3>
+            {% endfor%}
+            <br>
+            <!-- Поле для списка страниц-->
+            <span class="page-current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+            {% if page_obj.has_previous %}
+                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif%}
+            {% if page_obj.has_next %}
+                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>  
+            {% endif %}
+            <a href="{{ request.path }}?page={{ page_obj.has_other_pages.start_index }}">tttt</a>  
+            <a href="{{ request.path }}?page={{ page_obj.paginator.num_pages }}">t</a>  
+
+
+        {% else %}
+            <p> У Вас Нет Записей! </p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block JavaScript %}
+
+{% endblock %}

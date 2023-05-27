@@ -1,0 +1,55 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %} {{ products.title }} {% endblock %}
+{% block links %} 
+<link rel="stylesheet" href="{% static 'production/css/production_details.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="features ">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
+        <div ="col">
+            <div id="carouselExample" class="carousel slide " >
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{product.mainimage.url}}" class="d-inline w-100 " alt="изображение">
+                    </div>
+                    {% for images in product.image_set.all %}
+                    <div class="carousel-item"> <!-- карусель из доп.картинок -->
+                        <img src="{{ images.images.url}}" class="d-inline w-100 " alt="изображение">
+                    </div>
+                    {% endfor%}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+                </button>
+            </div>
+        </div>
+        <div class="col">
+            <h1>{{ product.name }}</h1>
+            <a class="none">Тэги:</a>
+            {% for tags in product.tag.all %}
+                <a class="btn btn-warning">{{ tags.title}}</a>
+            {% endfor %}
+            <p class="detail-text"><a class="none">Описание:</a> {{ product.description_text}}</p>
+            <p class="detail-text"><a class="none">Срок годности и условия хранения:</a> {{ product.storage}}</p>
+            <p class="detail-text"><a class="none">Способ приготовления:</a> {{ product.cooking}}</p>
+            <p class="detail-text"><a class="none">Состав:</a> {{ product.compound}}</p>
+            <p class="detail-text"><a class="none">Энергетическая ценность на 100гр. :</a> 
+                {{ product.value}}</p>
+            <p class="detail-text"><a class="none">Вид Упаковки:</a> {{ product.package}}</p>
+        </div>
+
+        
+    </div>
+{% endblock %}
+
+{% block JavaScript %}
+{% endblock %}

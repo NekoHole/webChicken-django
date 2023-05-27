@@ -1,0 +1,141 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}Главная {% endblock %}
+{% block links %} 
+<link rel="stylesheet" href="{% static 'production/css/production_home.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+
+{% endblock %}
+
+{% block content %}
+    <div class="row nia">
+        <div class="col">
+            <h1>Добро пожаловать на сайт Уральской птицефабрики!</h1>
+        </div>
+    </div>
+    <div id="main-content" class="row nia"> 
+        <div class="col">
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="{% static 'main/img/coolChicken2.jpg' %}" class="d-block w-100" alt="Тут должны быть птицы">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Птицефабрика Уральская</h5>
+                        <p>Мы любим наших птиц, даже, если они любят нас</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="{% static 'main/img/litleChicken.jpg' %}" class="d-block w-100" alt="Тут должны быть птенцы">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Шутка от нашего пр-отдела</h5>
+                        <p>Двести тысяч птичек уже готовы. 
+                            И ещё миллион на подходе.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                    <img src="{% static 'main/img/fabrica.jpg' %}" class="d-block w-100" alt="фабрика">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>В заполнении не нуждается</h5>
+                        <p>Всё равно пролистывать сюда никто не будет</p>
+                    </div>
+                </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+                </button>
+            </div>
+        </div>
+    </div>
+<div class="row nia d-flex flex-wrap  mt-3">
+    <div class="col-12 col-md-12 col-lg-8">
+        <h3>О Нас</h3>
+        <p>Птицефабрика «Уральская» – это современное и динамично развивающееся 
+            предприятие по производству мяса и яиц кур, уток и индеек. 
+            Наша компания находится в Московской области и обслуживает потребности рынка с 2002 года.</p>
+        <p>Мы гордимся качеством нашей продукции, которая соответствует всем санитарным и ветеринарным нормам и стандартам. 
+            Наша птица выращивается на натуральных кормах без антибиотиков и гормонов. Продукция сертифицирована и имеет 
+            высокий спрос среди потребителей.</p>
+    </div>
+    <div class="col-auto col-md-auto col-lg-4 d-flex justify-content-center ">
+        <img id="lot"src="{% static 'main/img/newLogo.png' %}" class="d-block" alt="лого">
+    </div>
+</div>
+<div class="row nia  mt-3">
+    <div class="col">
+        <h3>Официальный сайт птицефабрики Уральская</h3>
+        <p>На нашем сайте вы можете ознакомиться с ассортиментом нашей продукции,узнать о ее пользе и способах приготовления.  
+            узнать о наших акциях и специальных предложениях, заказать доставку или обратиться к нам 
+            по любому интересующему вас вопросу. 
+            Также на сайте размещена информация о нашей компании, нашей истории, наших достижениях и планах.       
+            Если вы хотите сделать заказ или задать вопрос, вы можете связаться 
+            с нами по телефону, электронной почте или через форму обратной связи.
+            Мы рады сотрудничеству с оптовыми и розничными покупателями.</p>
+
+        <p>Птицефабрика «Уральская» – это ваш надежный поставщик свежего и вкусного мяса и яиц птицы!</p>
+    </div>
+</div>
+{% if page_obj %} <!-- если в объекте newsесть записи, то мы их выводим-->   
+    <h3 id="product-title" class="mt-3">Продукция</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 row-cols-lg-5 g-3 justify-content-center"> 
+    {% for el_product in page_obj %}
+        <div class="col">
+            <div class="card h-100 shadow p3">
+                <a href="{% url 'production_detail' el_product.url %}"><img class="card-img-top" width="100%" height="225" src="{{el_product.mainimage.url}}" aria-label="картинка"  >
+                </img></a>
+                <div class="card-body">
+                    <h5 id="icard-title" class="card-title">{{el_product.name}}</h5>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <div class="shadow-sm">
+                    <a href="{% url 'production_detail' el_product.url %}" class="btn btn-warning " >Читать далее </a>
+                    </div>
+                    <small class="text-body-secondary">{{el_product.tag.title}}</small>
+                </div>
+            </div>
+        </div>  
+    {% endfor %}
+</div>
+{%endif%}
+
+<div class="row nia midle-content mt-3">
+    <div class="col">
+        <h3>О компании </h3>
+    <p>Уральская птицефабрика - это современное и динамично развивающееся предприятие, которое специализируется на производстве куриных яиц и мяса высокого качества. 
+        Наша миссия - обеспечить потребителей свежей и полезной продукцией, выращенной на экологически чистом корме и с соблюдением всех санитарных норм.</p>
+        
+    
+<P>Наша история началась в 2003 году, когда мы зарегистрировали наше предприятие и начали строительство птицефабрики на территории 17 га в Западно-Казахстанской области. С тех пор мы постоянно расширяем и модернизируем наше производство, внедряем новые технологии и повышаем квалификацию наших сотрудников. 
+    На сегодняшний день мы имеем 5 птичников для выращивания кур-несушек, вместимость 320 тыс. голов, 2 птичника для выращивания кур-молодок, вместимость 265 тыс. голов, 
+    а также новый цех по переработке и консервированию мяса домашней птицы.</P>
+<a class="d-flex justify-content-center"><img src="{% static 'main/img/gose.jpg' %}" alt="лого"></a>
+<P>Наша продукция - это куриные яйца и мясо разных сортов и размеров, которые отличаются свежестью, вкусом и питательностью. 
+    Мы контролируем все этапы производства - от выращивания кур-молодок до упаковки и доставки готовой продукции. 
+    Мы также следим за качеством нашего корма, который состоит из натуральных ингредиентов без ГМО и антибиотиков. 
+    Наша продукция сертифицирована по международным стандартам ISO 9001 и ISO 2200012.</P>
+
+<P>Мы гордимся нашими достижениями и признаниями, которые мы получили за нашу работу. Мы являемся лидерами птицеводства в Западно-Казахстанской области, а также одним из крупнейших поставщиков куриных яиц и мяса в регионе. 
+    Мы регулярно участвуем в различных выставках и конкурсах, где наша продукция получает высокие оценки экспертов и потребителей. Мы также получаем поддержку от государства по различным программам развития сельского хозяйства.</P>
+
+<P>Мы ценим наших клиентов и партнеров, с которыми мы строим долгосрочные и взаимовыгодные отношения. Мы всегда готовы учитывать ваши пожелания и предложения, а также предоставлять вам лучшие условия сотрудничества. 
+    Мы также заботимся о нашем обществе и окружающей среде, поэтому мы участвуем в различных социальных и экологических проектах.</P>
+
+<P>Мы приглашаем вас ознакомиться с нашей продукцией на нашем сайте или посетить нашу птицефабрику лично. Мы уверены, что вы останетесь довольны нашим качеством и сервисом!</P>
+    </div>
+</div>
+{% endblock %}
+
+{% block JavaScript %}
+{% endblock %}

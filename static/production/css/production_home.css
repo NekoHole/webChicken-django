@@ -1,0 +1,65 @@
+.features {
+    color: #000000;
+    text-align: center;
+    width: 100%;
+}
+.features h1{
+    color: #088C37;
+}
+
+.form-select{
+    background: #088C37;
+    border: 1px solid #088C37;
+    color: #ffffff;
+    width: 25%;
+    box-shadow: #088C37;
+}
+.form-select:hover {
+    color: #ffffff;
+    border-color: #eb5959;
+    background: #eb5959;
+    border: 1px solid #ffffff;
+}
+.form-select:active {
+    color: #ffffff;
+    border-color: #088C37;
+    background: #088C37;
+    border: 1px solid #088C37;
+}
+.form-select:disabled{
+    color: #ffffff;
+    border-color: #088C37;
+    background: #088C37;
+    border: 1px solid #088C37;
+}
+.form-select:focus{
+    color: #ffffff;
+    background: #088C37;
+}
+
+
+
+.btn-warning{
+    background-color: #088C37;
+    border: 1px solid #088C37;
+    color: #ffffff;
+}
+.btn-warning:hover{
+    color: #ffffff;
+    background-color: #eb5959;
+    border: 1px solid #eb5959;
+}
+
+#icard-title{
+    text-align: left;
+}
+
+
+.pagination a, .page-numbers a{
+    text-decoration: none;
+    color: #088C37;
+}
+.pagination a:hover, .page-numbers a:hover{
+    text-decoration: none;
+    color: #eb5959;
+}

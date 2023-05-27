@@ -1,0 +1,24 @@
+.features {
+    float: center;
+    color: #000000;
+    width: 100%;
+}
+h1{
+    color: #088C37;
+    text-align: left;
+    padding-bottom: 10px;
+}
+.detail-text{
+    text-align:justify;
+    white-space:pre-line;
+    font-size: 1.1em;
+}
+.none{
+    color: #088C37;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.btn-warning{
+    display: inline-table;
+}

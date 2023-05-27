@@ -1,0 +1,35 @@
+#main h1{
+    color: #088C37;
+    text-align: center;
+    width: 100%;
+}
+#main h4{
+
+    text-align: center;
+    width: 100%;
+}
+#search-buttoni{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 0%;
+    margin-right: 0%;
+    background: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 6px;
+    font-size: 1.1em;
+}
+#question{
+    padding: 1% 1.5% 1% 1.5%;
+    text-align:justify;
+}
+.card-body{
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+}
+
+@media (min-width: 576px) {
+    #search-buttoni{
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}

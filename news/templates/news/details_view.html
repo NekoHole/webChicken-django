@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %} {{ article.title }} {% endblock %}
+{% block links %} 
+<link rel="stylesheet" href="{% static 'news/css/news_home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="news-detail" class="features">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.date }}</p>
+        <div id="news-content" > 
+            <img class="shadow p3" src="{{article.images.url}}" alt="изображение"> 
+        </div> 
+            
+        <p class="news-detail-text">{{ article.full_text}}</p>
+    </div>
+{% endblock %}
+
+{% block JavaScript %}
+{% endblock %}

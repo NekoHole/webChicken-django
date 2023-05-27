@@ -1,0 +1,66 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}Главная {% endblock %}
+{% block links %} 
+<link rel="stylesheet" href="{% static 'contacts/css/contacts.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="features">
+
+    <div id="contacts-map" class="row row-cols-md-1 row-cols-lg-2 ">
+        <div class="col">
+            <h3>Контакты</h3>
+            <span>Мы рады ответить на любые ваши вопросы и пожелания по нашей продукции и услугам. 
+                Вы можете связаться с нами по телефону, электронной почте или через форму обратной связи на сайте.</span>
+
+            <h3>Адрес</h3>
+            <span>ТОО «Уральская птицефабрика» 090009, Республика Казахстан, Западно-Казахстанская область, г. Уральск, ул. Жангир хана, 931</span>
+
+            <h3>Телефоны</h3>
+            <span>8 (7112) 51-99-88 </span>
+            <p>8 (7112) 26-55-07</p>
+
+
+            <h3>Электронная почта</h3>
+            <span>too_upf@inbox.ru</span>
+        </div>
+        <div class="col d-flex justify-content-center">
+            <div id="mapa">
+            <script type="text/javascript" charset="utf-8" async 
+                src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A836fbff976fbba8b8ec82703dbe770ff7506a5a94093593d48e05fa6e355a0d8&amp;width=400&amp;height=400&amp;lang=ru_RU&amp;scroll=true">
+            </script>
+             </div>
+        </div>
+    </div>
+    <div id="form" class="row justify-content-center mt-2">
+        <div class="col">
+            <h3>Форма обратной связи</h3>
+            <span>Вы можете оставить свой отзыв, предложение или вопрос в форме ниже.</span>
+            <p>Мы постараемся ответить вам в кратчайшие сроки.</p>
+            
+            <form method="post">
+                {% csrf_token %}
+                {{ form.name}}<br>
+                {{ form.phoneNumber}}<br>
+                {{ form.email}}<br>
+                {{ form.idcategory }}<br>
+                {{ form.full_text }}<br>
+                {{ form.date }}
+                {% for errory in form.subject.errors %}
+                    <li><strong>{{ errory }}</strong></li>
+                {% endfor %}
+                <span> {{ error }} </span>
+                <button class="btn btn-success" type="submit">Отправить  </button> <!-- тип submit отправляет данные и перегружает страницу-->
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block JavaScript %}
+
+{% endblock %}

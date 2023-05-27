@@ -1,0 +1,45 @@
+.features{
+    padding-left: 0%;
+    padding-right: 0%;
+    text-align:justify;
+    white-space:line;
+    font-size: 1.1em;
+}
+.features h3{
+    color: #088C37;
+}
+.features span, .features p{
+    padding-bottom: 4px;
+}
+
+#form form{
+    padding-right: 0%;
+}
+
+
+@media (min-width: 576px) {
+    .features{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+  }
+@media (min-width: 992px) {
+#form form{
+    padding-right: 50%;
+}
+} 
+
+.features label{
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding-left: 0.75rem;
+}
+
+#mapa{
+    width: 410px;
+    height: 410px;
+    border-radius: 6px;
+    border: 2px solid silver;
+}

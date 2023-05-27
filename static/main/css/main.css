@@ -1,0 +1,86 @@
+#main-content{
+    width: 100%;
+    height: 400px;
+    text-align: center;
+}
+
+#main-content img{
+    width: 80%;
+    height: 400px;
+    border-radius: 6px;
+    border: 2px solid silver;
+    transition: transform .6s ease;
+}
+.carousel-caption{
+    background: #33333379;
+    border-radius: 30px;
+}
+.row h1{
+    text-align:center;
+    color: #088C37;
+}
+h3{
+    color: #088C37;
+    text-align:center;
+}
+#product-title{
+    padding-left: 0%;
+    padding-right: 0%;
+}
+.nia{
+    padding-left: 0%;
+    padding-right: 0%;
+    font-size: 1.1em;
+    text-align:justify;
+}
+#lot {
+    width: 50%
+}
+.midle-content img{
+    width: 100%;
+    height: 400px;
+    border-radius: 6px;
+    float: center;
+    border: 2px solid silver; 
+    transition: transform .6s ease;
+}
+
+.midle-content img:hover {
+    transform: scale(1.01);
+}
+@media (min-width: 993px) {
+    .nia {
+        padding-left: 10%;
+        padding-right: 10%;
+        /* На широких экранах четыре товара в ряд */
+    }
+    .nia img{
+        width: 80%;
+    }
+    #lot {
+        width: 80%;
+    }
+    h3{
+        color: #088C37;
+        text-align:justify;
+    }
+    #product-title{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .midle-content img{
+        width: 100%;
+    }
+}
+#main-content img:hover {
+    transform: scale(1.01);
+}
+
+#midle-content{
+    width: 100%;
+    height: 400px;
+    text-align: center;
+}
+
+
+

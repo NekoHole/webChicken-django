@@ -1,0 +1,38 @@
+.features {
+    color: #000000;
+    text-align: center;
+    width: 100%;
+}
+#career-detail h1{
+    color: #088C37;
+}
+#content-img img{
+    width: 70%;
+    height: 50%;
+    border-radius: 6px;
+    padding-left: 0%;
+    padding-right: 0%;
+    transition: transform .6s ease;
+}
+.content-text{
+    padding-left: 0%;
+    padding-right: 0%;
+    text-align:justify;
+    font-size: 1.1em;
+}
+
+@media (min-width: 576px) {
+    .content-text{
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+    #content-text{
+        padding-left: 15%;
+        padding-right: 15%;
+        width: 100%;
+    }
+
+}
+#content-img img:hover {
+    transform: scale(1.01);
+}
