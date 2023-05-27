@@ -22,7 +22,7 @@ class ContaForm(ModelForm):  #Класс, название любое, но об
                 'class': 'form-control', 
                 'placeholder': 'Введите свой номер телефона'
             }),
-            "email": TextInput(attrs={ #Так, Ну... В класс TextInpu мы передаём атрибуты в виде словаря, ок?
+            "email": TextInput(attrs={ 
                 'type' : 'email', 
                 'class': 'form-control', 
                 'placeholder': 'Введите email'

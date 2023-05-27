@@ -11,4 +11,4 @@ class newsDetailView(DetailView):
 
 def news_home(request):
     news = Articles.objects.order_by('-date')
-    return render(request, 'news/news_home.html', {'news':news}) #Выводим О нас из другого приложения, а именно main | И передём по ключу news такой объект как news, как определённый Ключ
+    return render(request, 'news/news_home.html', {'news':news})

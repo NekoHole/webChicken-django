@@ -6,9 +6,9 @@ def contacts(request):
     return render(request, 'contacts/contacts.html')
 
 def create(request):
-    error = '' #Да, так вот строковая переменная создаётся в питоне
-    if request.method == 'POST': #ебать какое сложно объеснение было, но типа потому что <form method="post">
-        form = ContaForm(request.POST) #Здесь будт находить объект со всеми данными из формы от пользоватея 
+    error = '' 
+    if request.method == 'POST': 
+        form = ContaForm(request.POST) 
         if form.is_valid():
             form.save()
             error = 'Корректное'
